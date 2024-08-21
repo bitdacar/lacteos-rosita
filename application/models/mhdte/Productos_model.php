@@ -67,25 +67,9 @@ class Productos_model extends CI_Model {
   /* ingresos productos*/
     
     
-  public function ingresoProducto( $nombre,$PrecPub,$PrecCCF,$uname,$estado,$busqueda,$mayoreo,$codestab,$tienda,$detarea ,$umedida,$minimo,$maximo ) {
+  public function ingresoProducto( $uname,$codestab,$tienda,$busqueda,$data ) {
 
-    $data  = array(
-        'codigo' => $uname,
-        'descripcion' =>$nombre,
-        'precio' =>$PrecCCF,
-        'precioPub' =>$PrecPub,
-        'area' => $estado,
-        'CtaInv' => 0,
-        'CtaIng' => 0,
-        'CtaGas' => 0,
-        'UnidadMedida' =>$umedida,      
-        'precio_mayoreo' =>$mayoreo,
-        'codCobol' =>$codestab,
-        'tienda' =>$tienda,
-        'dtearea'=> $detarea,
-        'minimo'=> $minimo,
-        'maximo'=> $maximo       
-    );
+   
 
     $this->db->where( 'codigo', $uname );
     $this->db->where( 'codCobol', $codestab);
@@ -128,6 +112,14 @@ class Productos_model extends CI_Model {
 
     $query = " select * from productos i where 
      codigo ='".$uname."'";
+    $resultados = $this->db->query( $query );
+    return $resultados->result();
+} 
+
+public function listarproducto($tienda,$codestab ) {
+
+    $query = " select * from productos i where 
+     tienda ='".$tienda."' and codCobol ='".$codestab."'";
     $resultados = $this->db->query( $query );
     return $resultados->result();
 } 

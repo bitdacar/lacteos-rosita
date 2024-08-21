@@ -29,7 +29,7 @@
  
  
  */
-function num_to_letras($numero, $moneda = 'DOLARES', $subfijo = '')
+function num_to_letras($numero, $moneda = 'DOLAR', $subfijo = '')
 {
     $xarray = array(
         0 => 'Cero'
@@ -158,13 +158,13 @@ function num_to_letras($numero, $moneda = 'DOLARES', $subfijo = '')
                     break;
                 case 2:
                     if (1 > $numero) {
-                        $xcadena = "CERO {$moneda}S {$xdecimales}/100 {$subfijo}";
+                        $xcadena = "CERO {$moneda} {$xdecimales}/100 {$subfijo}";
                     }
                     if ($numero >= 1 && $numero < 2) {
                         $xcadena = "UN {$moneda} {$xdecimales}/100 {$subfijo}";
                     }
                     if ($numero >= 2) {
-                        $xcadena.= " {$moneda}S {$xdecimales}/100 {$subfijo}"; //
+                        $xcadena.= " {$moneda}ES {$xdecimales}/100 {$subfijo}"; //
                     }
                     break;
             } // endswitch ($xz)

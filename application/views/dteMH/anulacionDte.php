@@ -111,7 +111,8 @@ $(document).ready(function() {
 
 $('#btnApi').on('click', function() {
 
-    const url = 'buscarDteAnular';
+   // const url = '';
+    url = "<?php echo base_url("mhdte/Integracion/buscarDteAnular");?>";
     const user = $('#codigoGeneracion').val();
     const pwd = '';
 

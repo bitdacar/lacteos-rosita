@@ -228,6 +228,7 @@ class vistas extends CI_Controller {
         $this->load->view( "layouts/header" );
         $this->load->view( "layouts/aside" );
         $this->load->view( "dteMH/IngresoProducto" );
+        $this->load->view( "dteMH/modalinPro");
         $this->load->view( "layouts/footer" );
 
     }
