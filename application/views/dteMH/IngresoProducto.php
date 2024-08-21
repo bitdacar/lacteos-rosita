@@ -29,7 +29,8 @@
                                         <div class="item form-group">
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
                                                 for="first-name">Codigo
-                                                <span class="required">*</span>
+                                               
+                                               
                                             </label>
                                             <div class="col-md-12 col-sm-12">
                                                 <input type="text" class="form-control " id="uname" required>
@@ -47,6 +48,8 @@
 
                                             </div>
                                         </div>
+                                        <hr class="label-aling">
+                                        <a href="#" onclick="listarProd()" class="text-rigth"> Listar Productos</a>
                                         <div class="item form-group">
                                             <label for="middle-name"
                                                 class="col-form-label col-md-12 col-sm-12 label-align">Sucursal del
@@ -66,6 +69,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <hr>
                                         <div class="col-md-12 col-sm-12">
                                         <button class="btn btn-info" type="button" onclick="buscarUsuarios()">Buscar
                                             Producto</button>
@@ -153,10 +157,20 @@
                                         </div>
                                         <div class="item form-group">
                                             <label class="col-form-label col-md-12 col-sm-12 label-align"
-                                                for="last-name">Unidad Medida<span class="required">*</span>
+                                                for="last-name">Unidad Medida Min. Hacienda<span class="required">*</span>
                                             </label>
                                             <div class="col-md-12 col-sm-12 ">
                                                 <select class="form-control " id="umedida" required> </select>
+
+
+                                            </div>
+                                        </div>
+                                        <div class="item form-group">
+                                            <label class="col-form-label col-md-12 col-sm-12 label-align"
+                                                for="last-name">Unidad Medida Interna<span class="required">*</span>
+                                            </label>
+                                            <div class="col-md-12 col-sm-12 ">
+                                                <select class="form-control " id="umedidaloc" required> </select>
 
 
                                             </div>
@@ -275,13 +289,23 @@ function llenarCombos() {
         success: function(data) {
 
             cat014 = JSON.parse(data);
+            //umedidaloc
 
             $("#umedida").empty();
+            $("#umedidaloc").empty();
             for (i = 0; i < cat014.length; i++) {
-                $("#umedida").append($("<option>", {
+                if(cat014[i]['lugar']=='lr'){
+                    $("#umedidaloc").append($("<option>", {
                     value: cat014[i]['codigo'],
                     text: cat014[i]['valor']
                 }));
+                }else{
+                    $("#umedida").append($("<option>", {
+                    value: cat014[i]['codigo'],
+                    text: cat014[i]['valor']
+                }));
+                }
+               
 
             }
 
@@ -337,6 +361,7 @@ $('#formproductos').submit(function() {
         "tienda": $('#tienda').val(),
         "detarea": $('#detarea').val(),
         "umedida": $('#umedida').val(),
+        "umedidaloc": $("#umedidaloc").val(),
         "maximo": $('#maximo').val(),
         "minimo": $('#minimo').val(),
         "busqueda": busqueda,
@@ -403,9 +428,11 @@ function buscarUsuarios() {
                 $('#activo').val(cat016[0].area);
                 $('#detarea').val(cat016[0].dtearea);
                 $('#umedida').val(cat016[0].UnidadMedida);
+                $('#umedidaloc').val(cat016[0].uniInterna);
                 $('#maximo').val(cat016[0].maximo);
                 $('#minimo').val(cat016[0].minimo);
                 $('#mayoreo').val(cat016[0].precio_mayoreo);
+                $('#tienda').val(cat016[0].tienda);
 
                 $('#codestab').attr("readonly", true);
                 $('#tienda').attr("readonly", true);

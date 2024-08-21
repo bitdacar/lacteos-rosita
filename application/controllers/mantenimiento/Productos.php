@@ -26,10 +26,30 @@ class Productos extends CI_Controller
   $busqueda=$this->input->post( "busqueda" );
   $detarea=$this->input->post("detarea");
   $umedida=$this->input->post("umedida");
+  $umedidaloc=$this->input->post("umedidaloc");
   $minimo=$this->input->post("minimo");
   $maximo=$this->input->post("maximo");
   
-$tablaUsuarios = $this->Productos_model->ingresoProducto($nombre,$PrecPub,$PrecCCF,$uname,$estado,$busqueda,$mayoreo,$codestab,$tienda,$detarea,$umedida,$minimo,$maximo );  
+  $data  = array(
+	'codigo' => $uname,
+	'descripcion' =>$nombre,
+	'precio' =>$PrecCCF,
+	'precioPub' =>$PrecPub,
+	'area' => $estado,
+	'CtaInv' => 0,
+	'CtaIng' => 0,
+	'CtaGas' => 0,
+	'UnidadMedida' =>$umedida,      
+	'precio_mayoreo' =>$mayoreo,
+	'codCobol' =>$codestab,
+	'tienda' =>$tienda,
+	'dtearea'=> $detarea,
+	'minimo'=> $minimo,
+	'maximo'=> $maximo,    
+	"uniInterna"=>$umedidaloc
+);
+
+$tablaUsuarios = $this->Productos_model->ingresoProducto($uname,$codestab,$tienda,$busqueda,$data );  
   echo json_encode( $tablaUsuarios );
   
   }
@@ -37,6 +57,14 @@ $tablaUsuarios = $this->Productos_model->ingresoProducto($nombre,$PrecPub,$PrecC
 public function BuscarProductos(){
 	$uname=$this->input->post( "uname" );
 $tablaUsuarios = $this->Productos_model->BuscarProductos($uname );  
+  echo json_encode( $tablaUsuarios );
+  
+  }
+
+  function listarproducto(){
+	$tienda=$this->input->post( "tienda" );
+	$codestab=$this->input->post( "codestab" );
+$tablaUsuarios = $this->Productos_model->listarproducto($tienda,$codestab );  
   echo json_encode( $tablaUsuarios );
   
   }

@@ -92,7 +92,7 @@ function detalleTabla( $respuesta, $impuestos ){
                             $detalleTablaFilas.='<tr>
                                 <td >'.$respuesta[$i]->item.'</td>
                                 <td >'.$respuesta[$i]->cantidad.'</td>
-                                <td >'.$respuesta[$i]->codigo.' '.$respuesta[$i]->descripcion.''.$respuesta[$i]->observacionesItem.'</td>
+                                <td >'.$respuesta[$i]->descripcion.''.$respuesta[$i]->observacionesItem.'</td>
                                 <td >'.$respuesta[$i]->precioUnitario.'</td>
                                 <td >'.$respuesta[$i]->promo.'</td>
                                 <td class="text-right"><label class="fa fa-inr">$ </label> '.$respuesta[$i]->subtotal.'</td>
