@@ -170,8 +170,7 @@ class Cuerpodocumento extends CI_Controller
             'tipoItem' => 3,
             'tipoDonacion' => '',
             'depreciacion' => '',
-            'numDocRelacionado' => $this->input->post("item78"),
-
+            'numDocRelacionado' => $this->input->post("item78"),           
             'cantidad' => $this->input->post("item80"),
             'codigo' => $this->input->post("item81"),
             'codTributo' => '',
@@ -194,6 +193,8 @@ class Cuerpodocumento extends CI_Controller
             'observacionesItem' => $observacionesItem,
             'areafact' =>  $areafact,
             'serieProd' => $serieProd,
+            'cantint' =>$this->input->post("cantint"),
+            'umedida'=>$this->input->post("umedida")
 
         );
 
@@ -940,7 +941,10 @@ class Cuerpodocumento extends CI_Controller
             'observacionesItem' => $this->input->post("observacionesItem"),
             'observacionesItems' => $this->input->post("Marcas"),
             'areafact' => $this->session->userdata("areafact"),
-            'sacosEsp' =>   json_encode($dataPost)
+            'sacosEsp' =>   json_encode($dataPost),
+            'cantint' =>$this->input->post("cantint"),
+            'umedida'=>$this->input->post("umedida")
+
 
         );
 

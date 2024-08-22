@@ -185,7 +185,7 @@ class json_model extends CI_Model
         $this->db->join("receptor r", "rd.idReceptor = r.codigo");
         $this->db->where("rd.numeroControl", $this->numeroControl);
         $this->db->where("rd.codigoGeneracion", $this->codigoGeneracion);
-		if($this->tipoDTE == self::FEXE ) $this->db->where('r.area', 'EX');
+		if($this->tipoDTE == self::FEXE ) 
         $resultados = $this->db->get();
         return $resultados->row();
     }

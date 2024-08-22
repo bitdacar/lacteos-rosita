@@ -140,7 +140,7 @@ class receptor extends CI_Controller {
     public function listaBuscarCliente(){
       
         $codigo = $this->input->post( "codigo" );
-        $area = $this->session->userdata( "areafact");
+        $area = $this->session->userdata( "area");
         
         $response=$this->receptor_model->listareceptor($codigo,$area);
         echo  json_encode($response);

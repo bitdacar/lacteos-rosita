@@ -83,7 +83,8 @@ class vistas extends CI_Controller {
         $this->load->view( "layouts/footer" );
     } 
     public function FacturaExp() {
-        $this->session->set_userdata( "dtearea","CE") ;
+        $this->session->set_userdata( "dtearea","CT") ;
+        $this->session->set_userdata( "area","EX") ;
 
         $texto="fACTURA exportacion";
 
