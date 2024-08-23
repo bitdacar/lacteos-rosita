@@ -44,7 +44,8 @@ class comprasComp extends CI_Controller
         $item157 = $this->input->post("item157");
         $Calcular1 = $this->input->post("Calcular1");
 
-
+        $codigoIdentificacion = strtoupper( $this->uuid->v4() );
+        
 
         /* insertando encabezado de compra*/
         $dataCompras = array
@@ -62,6 +63,7 @@ class comprasComp extends CI_Controller
             'tipcompra' => $selectCo,
             'tipPago' => '',
             'concalculo' => $Calcular1,
+            'Identificacion'=>$codigoIdentificacion
         );
 
 
@@ -71,7 +73,8 @@ class comprasComp extends CI_Controller
 
         if ($this->Integracion_model->ingresoEcompras($dataCompras)) {
             $datasave = array(
-                'ok' => true
+                'ok' => true,
+                'identificacion' =>$codigoIdentificacion 
             );
             echo json_encode($datasave);
         } else {

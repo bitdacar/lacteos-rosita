@@ -165,7 +165,8 @@
                             <h3 class="card-title">  
                             <input type="hidden" class="form-control-sm col-md-3 col-sm-3" id="item78" />
                     <label>Correlativo: <small id="Vnumcontrol"></small> &nbsp;&nbsp;&nbsp;</label>
-                    <label>Codigo: <small id="Vcodcontrol"></small> </label>
+                    <label>Codigo: <small id="Vcodcontrol"></small> </label> &nbsp;&nbsp;&nbsp; </label>
+                    <label>Identificador Unico: <small id="identificacion"></small> </label>
                             </h3>
                         </div>
 
@@ -329,6 +330,7 @@
     var periodoPlazo = '';
     var arregleclientes='';
     var fechaemi;
+    var identificacion = '';
     
     // calcular total
     var descripciones=''; var TvtaExenta=0; var TvtaGravada=0; var iva13 =0; var iva1=0;
@@ -418,6 +420,8 @@ $('#TotalDesc').on('input', function(){
                     respuesta = JSON.parse(data);
 
                     if(respuesta.ok){
+                        identificacion = respuesta.identificacion;
+                        $('#identificacion').html(respuesta.identificacion);
                         if(DTEenvio){
                             mensaje('DTE Guardado', 'DTE en proceso de ser enviado', 'info');
                         } else{
@@ -521,7 +525,8 @@ $('#TotalDesc').on('input', function(){
             "cmbTipDteFis": $('#cmbTipDteFis').val(),
             "ctrlInterno": $('#ctrlInterno').val(),
             "seriedoc": $('#seriedoc').val(),
-              "subTotalIva1":$('#subTotalIva1').val()
+              "subTotalIva1":$('#subTotalIva1').val(),
+              "identificacion": identificacion
         };
 
         if (numeroControl != '' || codigoGeneracion != '') {
@@ -631,7 +636,8 @@ $('#TotalDesc').on('input', function(){
             "SelloValida": $('#SelloValida').val(),
             "fechaemi":$('#fechaemi').val(),
             "subTotalIva1":$('#subTotalIva1').val(),
-            "select2": $('#selectCo').val()
+            "select2": $('#selectCo').val(),
+            "identificacion": identificacion,
         };
 
 
@@ -676,7 +682,8 @@ $('#TotalDesc').on('input', function(){
 
         var Datos = {
             "numControl": numeroControl,
-            "codGeneracion": codigoGeneracion
+            "codGeneracion": codigoGeneracion,
+            "identificacion": identificacion
 
         };
 

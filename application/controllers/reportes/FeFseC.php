@@ -68,7 +68,7 @@ class feFseC extends CI_Controller {
         $renta =    $impuestos[4]->valor;
         $ivaResumen = 0.00;
         $totalGravado = 0.00; 
-        $ivaRetenido = 0.0;
+        $ivaRetenido = 0;
         $fovialRet = 0.0;
         $cotransRet = 0.0;
         $rentaTotal=0.00;
@@ -100,7 +100,7 @@ class feFseC extends CI_Controller {
                                 <td class="text-right"><label class="fa fa-inr">$ </label> '.$respuesta[$i]->subtotal.'</td>
                             </tr>';
             $ivaResumen += $respuesta[$i]->ivaItem;
-            $ivaRetenido += $respuesta[$i]->ivaRetenido;
+            $ivaRetenido += trim( $respuesta[$i]->ivaRetenido, '"' );
             $totalGravado += $respuesta[$i]->subtotal;
              $rentaTotal += floatval( trim( $respuesta[$i]->retencionRenta, '"' ) );
         }
@@ -161,7 +161,7 @@ class feFseC extends CI_Controller {
 
          }
     
-     public function feFseC(){
+     public function FeFseC(){
           sleep(2);
         //$numeroControl='DTE-14-CMPV0202-000000000005540';
         //$codigoGeneracion='4595401B-6535-48F3-8C50-C5347BB64EEB';
@@ -169,7 +169,7 @@ class feFseC extends CI_Controller {
         $codigoGeneracion = $this->input->post( "codigoGeneracion" );
         $escorreo = $this->input->post( "area" );
          $respuesta = $this->cuerpodocumento_model->getParaResumen( $numeroControl, $codigoGeneracion );
-           $emisor = $this->emisor_model->getEmisor();
+        $emisor = $this->emisor_model->getEmisor($this->session->userdata( "codestab" ));
         $receptor = $this->receptor_model->getreceptor($numeroControl ,$codigoGeneracion);
          $impuestos =  $this->cuerpodocumento_model->getImpuestos();
         $respuestaMH= $this->receptor_model->getMH($numeroControl ,$codigoGeneracion);
@@ -216,7 +216,7 @@ class feFseC extends CI_Controller {
             'margin_left'=>1,
             'margin_bottom'=>1,
         ]);
-        $css2=file_get_contents(base_url().'assets/template/bootstrap/dist/css/bootstrapreport.min.css');
+        $css2=file_get_contents(base_url().'assets/template/bootstrap/dist/css/bootstrapReport.min.css');
         $mpdf->WriteHTML($css);
         $mpdf->WriteHTML($css2,\Mpdf\HTMLParserMode::HEADER_CSS);
        

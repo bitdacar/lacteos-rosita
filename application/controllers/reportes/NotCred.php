@@ -26,7 +26,7 @@ class notCred extends CI_Controller {
       $codigoGeneracion = $this->input->post( "codigoGeneracion" );
             $escorreo = $this->input->post( "area" );
          $respuesta = $this->cuerpodocumento_model->getParaResumen( $numeroControl, $codigoGeneracion );
-           $emisor = $this->emisor_model->getEmisor();
+           $emisor = $this->emisor_model->getEmisor($this->session->userdata( "codestab" ));
         $receptor = $this->receptor_model->getreceptor($numeroControl ,$codigoGeneracion);
          $impuestos =  $this->cuerpodocumento_model->getImpuestos();
          $respuestaMH= $this->receptor_model->getMH($numeroControl ,$codigoGeneracion);

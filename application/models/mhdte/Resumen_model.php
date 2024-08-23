@@ -151,14 +151,14 @@ date_format(a.fecha, '%Y-%m-%d') fecha,
 a.hora,c.ivaRetenido,c.ivaPercibido,r.retencionRenta,r.iva13,
 r.condicionOpera, r.codFormaPago,r.montoPorFormaPag,totalAPagar,
 	r.plazo,r.periodoPlazo,r.numPagoElecNPE,r.montoTotalOp,
-r.refModalidadPago,C.observacionesItem,c.item,c.areafact,c.descripcion,c.montoretencion,c.fechaGendoc,c.subtotal,r.totalIvaRetenido,c.codRetencion,r.totalMonSujRet,c.ventasGravadas,
+r.refModalidadPago,c.observacionesItem,c.item,c.areafact,c.descripcion,c.montoretencion,c.fechaGendoc,c.subtotal,r.totalIvaRetenido,c.codRetencion,r.totalMonSujRet,c.ventasGravadas,
 s.codigo, s.grancontribuyente,s.Nomdenominacion
-from identificacion A 
-JOIN  receptordocumen B on a.numeroControl=b.numeroControl and a.codigoGeneracion=b.codigoGeneracion and a.fecha=b.fecha
+from identificacion a 
+JOIN  receptordocumen b on a.numeroControl=b.numeroControl and a.codigoGeneracion=b.codigoGeneracion and a.fecha=b.fecha
 JOIN resumen r ON a.numeroControl=r.numeroControl and a.codigoGeneracion=r.codigoGeneracion
-JOIN Cuerpodocumento C on a.numeroControl=c.numeroControl and a.codigoGeneracion=c.codigoGeneracion
+JOIN Cuerpodocumento c on a.numeroControl=c.numeroControl and a.codigoGeneracion=c.codigoGeneracion
 
-join receptor s on s.codigo = B.idReceptor 
+join receptor s on s.codigo = b.idReceptor 
 where  
 (a.numeroControl= '".$id."' and
 a.codigoGeneracion='".$cod."')";

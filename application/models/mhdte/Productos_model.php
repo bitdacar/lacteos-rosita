@@ -55,6 +55,7 @@ class Productos_model extends CI_Model {
     }
     public function item83() {
         $this->db->from( "cat014" );
+        $this->db->where( 'estado', 1 );
         $resultados = $this->db->get();
         return $resultados->result();
     } 

@@ -162,6 +162,7 @@
 
                                               </select>
                                               <input type="hidden" id="real">
+                                              
                                           </div>
                                           <div class="form-group">
                                               <input type="hidden" id="observacionesItem" class="form-control"
@@ -174,7 +175,7 @@
 
 
                                               <select class="form-control  col-md-12" id="item83" disabled>
-                                                 
+
                                               </select>
 
                                           </div>
@@ -189,6 +190,29 @@
                                                   placeholder="Promociones" />
 
                                           </div>
+                                          <button type="submit" class="btn-sm btn-secondary">Agregar Item</button>
+                                      </div>
+
+                                      <div class="col-md-3">
+                                          <div class="card card-primary card-outline">
+                                              <div class="card-header">
+
+                                                 
+
+                                                      <label>Medida interna</label>
+                                                      <div class="form-group">
+                                                          <input type="number" step="0.01" class="form-control"
+                                                              id="cantint" required />
+                                                      </div>
+                                                      <div class="form-group">
+
+                                                          <select class="form-control" id="umedida" required></select>
+                                                      </div>
+                                                  
+                                              </div>
+                                          </div>
+
+
                                       </div>
                                       <div class="col-md-2">
                                           <label> &nbsp;</label>
@@ -196,10 +220,9 @@
 
                                               <input type="hidden" id="item78" />
                                               <input type="hidden" id="destino" />
-                                              <button type="submit" class="btn-sm btn-secondary">Agregar</button>
+                                            
                                           </div>
                                       </div>
-                                      <div class="col-md-3"></div>
                                   </div>
 
                               </form>
@@ -529,11 +552,20 @@ function llenacombos() {
             cat014 = JSON.parse(data);
 
             $("#item83").empty();
+            $("#umedida").empty();
+
             for (i = 0; i < cat014.length; i++) {
-                $("#item83").append($("<option>", {
-                    value: cat014[i]['codigo'],
-                    text: cat014[i]['valor']
-                }));
+                if (cat014[i]['lugar'] != 'lr') {
+                    $("#item83").append($("<option>", {
+                        value: cat014[i]['codigo'],
+                        text: cat014[i]['valor']
+                    }));
+                } else {
+                    $("#umedida").append($("<option>", {
+                        value: cat014[i]['codigo'],
+                        text: cat014[i]['valor']
+                    }));
+                }
 
             }
 
@@ -651,7 +683,9 @@ $('#Cuerpodocumento').submit(function() {
         "item78": $('#item78').val(),
         "item153": $('#item153').val(),
         "promo": $('#promo').val(),
-"areafact": areafact,
+        "areafact": areafact,
+        "cantint": $('#cantint').val(),
+        "umedida": $('#umedida').val(),
         "observacionesItem": $('#observacionesItem').val(),
         "item72": filas,
         "item73": tableDetalle.rows().count()

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class receptor_model extends CI_Model {
 
     public function getreceptor($num,$cod){
-        $area = $this->session->userdata( "areafact");
+        $area = $this->session->userdata( "area");
         $this->db->select("p.*, c.*");
         $this->db->from("receptordocumen c");
         $this->db->join("receptor p"," p.codigo =c.idReceptor ", 'left');

@@ -8,7 +8,7 @@
                      
                   </div>
                   <div class="col-sm-6">
-                     <h3 id='infoFactura'>FACTURA ELECTRONICA SUJETO EXCLUIDO <h6 class="text texr-info" >COMPRAS</h6></h3>
+                     <h3 id='infoFactura'>FACTURA ELECTRONICA SUJETO EXCLUIDO <small class="text texr-info" >COMPRAS</small></h3>
                   </div>
                   <div class="col-sm-2">
                       <div class="col-md-2   form-group pull-right top_search">

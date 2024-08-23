@@ -210,7 +210,7 @@ $escorreo = $this->input->post( "area" );
             'margin_left'=>1,
             'margin_bottom'=>1,
         ]);
-        $css2=file_get_contents(base_url().'assets/template/bootstrap/dist/css/bootstrapreport.min.css');
+        $css2=file_get_contents(base_url().'assets/template/bootstrap/dist/css/bootstrapReport.min.css');
         $mpdf->WriteHTML($css);
         $mpdf->WriteHTML($css2,\Mpdf\HTMLParserMode::HEADER_CSS);
        
