@@ -185,7 +185,7 @@ class json_model extends CI_Model
         $this->db->join("receptor r", "rd.idReceptor = r.codigo");
         $this->db->where("rd.numeroControl", $this->numeroControl);
         $this->db->where("rd.codigoGeneracion", $this->codigoGeneracion);
-		if($this->tipoDTE == self::FEXE ) 
+		//if($this->tipoDTE == self::FEXE ) 
         $resultados = $this->db->get();
         return $resultados->row();
     }
@@ -476,7 +476,7 @@ class json_model extends CI_Model
 				cd.codigo,
 				cd.codTributo,
 				cd.unidadMedida as uniMedida,
-				cd.descripcion,36
+				cd.descripcion,
 				cd.precioUnitario as precioUni,
 				cd.descuentos as montoDescu,
 				cd.ventasNSujetas as ventaNoSuj,

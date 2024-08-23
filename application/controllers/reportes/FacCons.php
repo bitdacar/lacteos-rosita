@@ -245,7 +245,7 @@ function detalleTabla( $respuesta, $impuestos ){
      
         
         // Email subject
-        $mail->Subject = 'Cuzcachapa de R.L';
+        $mail->Subject = $emisor[0]->nomComercial ;
         
         // Set email format to HTML
         $mail->isHTML(true);

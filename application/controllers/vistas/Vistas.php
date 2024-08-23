@@ -62,6 +62,7 @@ class vistas extends CI_Controller {
     }
     public function fsexe() {
         $this->session->set_userdata( "dtearea","CS") ;
+        $this->session->set_userdata( "area","CC") ;
         $this->load->view( "layouts/header" );
         $this->load->view( "layouts/aside" );
         $this->load->view( "dteMH/SujetoEx" );

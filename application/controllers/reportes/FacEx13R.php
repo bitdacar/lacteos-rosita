@@ -184,7 +184,7 @@ class facEx13R extends CI_Controller {
         $codigoGeneracion = $this->input->post( "codigoGeneracion" );
         $escorreo = $this->input->post( "area" );
         $respuesta = $this->cuerpodocumento_model->getParaResumen( $numeroControl, $codigoGeneracion );
-        $emisor = $this->emisor_model->getEmisor();
+        $emisor = $this->emisor_model->getEmisor($this->session->userdata( "codestab" ));
         $receptor = $this->receptor_model->getreceptor($numeroControl ,$codigoGeneracion);
         $impuestos =  $this->cuerpodocumento_model->getImpuestos();
         $respuestaMH= $this->receptor_model->getMH($numeroControl ,$codigoGeneracion);
@@ -232,7 +232,7 @@ class facEx13R extends CI_Controller {
             'margin_left'=>1,
             'margin_bottom'=>1,
         ]);
-        $css2=file_get_contents(base_url().'assets/template/bootstrap/dist/css/bootstrapreport.min.css');
+        $css2=file_get_contents(base_url().'assets/template/bootstrap/dist/css/bootstrapReport.min.css');
         $mpdf->WriteHTML($css);
         $mpdf->WriteHTML($css2,\Mpdf\HTMLParserMode::HEADER_CSS);
        

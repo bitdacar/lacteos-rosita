@@ -9,7 +9,7 @@ class Ccfe extends CI_Controller {
         if (!$this->session->userdata("login")) {
             redirect(base_url());
         }
-        $this->load->model( "mhdte/cuerpodocumento_model" );
+       $this->load->model( "mhdte/cuerpodocumento_model" );
         $this->load->model( "mhdte/emisor_model" );
         $this->load->model( "mhdte/receptor_model" );
          $this->load->library('Encabezados');
@@ -193,7 +193,7 @@ function detalleTabla( $respuesta, $impuestos ){
         $codigoGeneracion = $this->input->post( "codigoGeneracion" );
         $escorreo = $this->input->post( "area" );
         $respuesta = $this->cuerpodocumento_model->getParaResumen( $numeroControl, $codigoGeneracion );
-        $emisor = $this->emisor_model->getEmisor();
+        $emisor = $this->emisor_model->getEmisor($this->session->userdata( "codestab" ));
         $receptor = $this->receptor_model->getreceptor($numeroControl ,$codigoGeneracion);
         $impuestos =  $this->cuerpodocumento_model->getImpuestos();
         $respuestaMH= $this->receptor_model->getMH($numeroControl ,$codigoGeneracion);
@@ -242,7 +242,7 @@ function detalleTabla( $respuesta, $impuestos ){
             'margin_left'=>1,
             'margin_bottom'=>1,
         ]);
-       $css2=file_get_contents(base_url().'assets/template/bootstrap/dist/css/bootstrapreport.min.css');
+       $css2=file_get_contents(base_url().'assets/template/bootstrap/dist/css/bootstrapReport.min.css');
         $mpdf->WriteHTML($css);
         $mpdf->WriteHTML($css2,\Mpdf\HTMLParserMode::HEADER_CSS);
        
@@ -264,12 +264,12 @@ function detalleTabla( $respuesta, $impuestos ){
 
         # Nombre del archivo PDF #
         sleep(2);
-        //$this->load->library('email');
-         $this->load->library('phpmailer_lib');
+   //$this->load->library('email');
+   $this->load->library('phpmailer_lib');
         
        if($escorreo==''){
             // PHPMailer object
-        $mail = $this->phpmailer_lib->load();
+            $mail = $this->phpmailer_lib->load();
             
         // Add a recipient
         $mail->addAddress($receptor[0]->correoReceptor);
@@ -279,7 +279,7 @@ function detalleTabla( $respuesta, $impuestos ){
      
         
         // Email subject
-        $mail->Subject = 'Cuzcachapa de R.L';
+        $mail->Subject = $emisor[0]->nomComercial ;
         
         // Set email format to HTML
         $mail->isHTML(true);

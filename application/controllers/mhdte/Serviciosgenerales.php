@@ -695,13 +695,14 @@ class serviciosgenerales extends CI_Controller {
         $codigoGeneracion = strtoupper( $this->uuid->v4() );
 
         $anio = date( "Y" );
-        $numeroControl = $this->identificacion_model->corelativo( $anio );
-
+        $numeroControl = $this->identificacion_model->corelativo($anio, $this->session->userdata("codestab"));
 
         $data = array(
-            'numeroControl' => $numeroControl->numeroControl+1,
-        );
-        $this->identificacion_model->corelativoUpdate( $anio, $data );
+            'numeroControl' => $numeroControl->numeroControl + 1,
+            );
+        $this->identificacion_model->corelativoUpdate($anio,$this->session->userdata("codestab"), $data);
+
+
 
         // IDENTIFICACION DOCUMENTO
         $secuencia=str_pad( ( $numeroControl->numeroControl+1 ), 15, "0", STR_PAD_LEFT );
@@ -721,7 +722,7 @@ class serviciosgenerales extends CI_Controller {
         $data  = array(
 
             'version'=>$version,
-            'ambDestino'=>'01',
+            'ambDestino'=>$this->session->userdata('ambiente'),
             'tipoDoc'=>$codTdoc,
             'numeroControl' =>$numeroControlFin  ,
             'codigoGeneracion' => $codigoGeneracion,

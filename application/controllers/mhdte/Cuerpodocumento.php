@@ -977,8 +977,8 @@ class Cuerpodocumento extends CI_Controller
 
         $data = array(
             'numeroControl' => $numeroControl->numeroControl + 1,
-        );
-        $this->identificacion_model->corelativoUpdate($anio, $data);
+            );
+        $this->identificacion_model->corelativoUpdate($anio,$this->session->userdata("codestab"), $data);
 
 
         $tipodocSelect = $this->input->post("tipodocSelect");
