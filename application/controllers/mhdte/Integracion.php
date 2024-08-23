@@ -850,13 +850,13 @@ $Reporte='Ccfe';
 
         $identificacion= array(
             'version' => 2,
-            'ambiente' => '01',
+            'ambiente' => $this->session->userdata('ambiente'),
             'codigoGeneracion' => $codigoGeneracion,
             'fecAnula' => $fecha,
             'horAnula' => $hora,
         );
 
-        $emisor=$this->emisor_model->getEmisor();
+        $emisor=$this->emisor_model->getEmisor($this->session->userdata( "codestab" ));
         $emi=array(
             'nit'=>str_replace("-","",$emisor[0]->nit),
             'nombre'=>$emisor[0]->nomComercial,
@@ -984,7 +984,7 @@ $Reporte='Ccfe';
 
         $identificacion= array(
             'version' => 3,
-            'ambiente' => '01',
+            'ambiente' => $this->session->userdata('ambiente'),
             'codigoGeneracion' => $codigoGeneracion,
             'fTransmision' => $fecha,
             'hTransmision' => $hora,
