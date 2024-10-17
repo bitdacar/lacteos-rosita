@@ -20,7 +20,7 @@ class generales extends CI_Controller {
 
 
         $response=$this->productos_model->listaProductos($area,$codigo,$tienda);
-        echo  json_encode(value: $area.' -- '.$codigo.' -- '.$tienda);
+        echo  json_encode($response);
 
 
     }
