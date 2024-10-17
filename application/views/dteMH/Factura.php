@@ -122,110 +122,121 @@
                           </div>
 
                           <div class="card-body">
-                              <form class="form-horizontal" id="Cuerpodocumento">
-                                  <div class="row">
-                                      <div class="col-md-6">
-                                          <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                                              data-target=".bs-example-modal-lg">Productos</button>
-                                          <button id="partidaBtn" type="button" class="btn btn-primary btn-sm"
-                                              data-toggle="modal" data-target=".bs-example-modal-lgPart">Partida
-                                              Contabla</button>
-                                      </div>
+
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
+                                          data-target=".bs-example-modal-lg">Productos</button>
+                                      <button id="partidaBtn" type="button" class="btn btn-primary btn-sm"
+                                          data-toggle="modal" data-target=".bs-example-modal-lgPart"
+                                          style="display:none">Partida
+                                          Contable</button>
                                   </div>
-                                  <div class="row">
-                                      <div class="col-md-1">
-                                          <label>cantidad</label>
-                                          <div class="form-group">
-                                              <input type="text" class="form-control" id="item80" placeholder="Cantidad"
-                                                  required>
-                                          </div>
-                                      </div>
-                                      <div class="col-md-1">
-                                          <label>Producto</label>
-                                          <div class="form-group">
+                              </div>
+                              <div class="row">
+                                 
+                                      <div class="col-md-10">
+                                      <form class="form-horizontal" id="Cuerpodocumento">
+                                          <div class="row">
+                                              <div class="col-md-1">
+                                                  <label>cantidad</label>
+                                                  <div class="form-group">
+                                                      <input type="text" class="form-control" id="item80"
+                                                          placeholder="Cantidad" required>
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-2">
+                                                  <label>Producto</label>
+                                                  <div class="form-group">
 
-                                              <input type="text" id="item81" required="required" class="form-control"
-                                                  placeholder="Codigo producto">
+                                                      <input type="text" id="item81" required="required"
+                                                          class="form-control" placeholder="Codigo producto">
 
-                                          </div>
-                                          <div class="form-group">
-                                              <input type="hidden" id="observacionesItem" class="form-control"
-                                                  placeholder="Serie" />
-                                          </div>
-                                      </div>
-                                      <div class="col-md-3">
-                                          <label> &nbsp;</label>
-                                          <div class="form-group">
-
-
-                                              <select class="form-control" id="item84">
-
-                                              </select>
-                                              <input type="hidden" id="real">
-                                              
-                                          </div>
-                                          <div class="form-group">
-                                              <input type="hidden" id="observacionesItem" class="form-control"
-                                                  placeholder="Serie" />
-                                          </div>
-                                      </div>
-                                      <div class="col-md-1">
-                                          <label>U. Medida</label>
-                                          <div class="form-group">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <input type="hidden" id="observacionesItem" class="form-control"
+                                                          placeholder="Serie" />
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-2">
+                                                  <label> &nbsp;</label>
+                                                  <div class="form-group">
 
 
-                                              <select class="form-control  col-md-12" id="item83" disabled>
+                                                      <select class="form-control" id="item84">
 
-                                              </select>
+                                                      </select>
+                                                      <input type="hidden" id="real">
 
-                                          </div>
-                                      </div>
-                                      <div class="col-md-1">
-                                          <label>Precio</label>
-                                          <div class="form-group">
+                                                  </div>
+                                                  <div class="form-group">
+                                                      <input type="hidden" id="observacionesItem" class="form-control"
+                                                          placeholder="Serie" />
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-2">
+                                                  <label>U. Medida</label>
+                                                  <div class="form-group">
 
-                                              <input type="number" class="form-control col-md-12" id="item85"
-                                                  placeholder="precio" step="0.0001">
-                                              <input type="hidden" id="promo" class="form-controlcol-md-12"
-                                                  placeholder="Promociones" />
 
-                                          </div>
-                                          <button type="submit" class="btn-sm btn-secondary">Agregar Item</button>
-                                      </div>
+                                                      <select class="form-control  col-md-12" id="item83" disabled>
 
-                                      <div class="col-md-3">
-                                          <div class="card card-primary card-outline">
-                                              <div class="card-header">
+                                                      </select>
 
-                                                 
+                                                  </div>
+                                              </div>
+                                              <div class="col-md-2">
+                                                  <label>Precio</label>
+                                                  <div class="form-group">
 
-                                                      <label>Medida interna</label>
-                                                      <div class="form-group">
-                                                          <input type="number" step="0.01" class="form-control"
-                                                              id="cantint" required />
+                                                      <input type="number" class="form-control col-md-12" id="item85"
+                                                          placeholder="precio" step="0.0001">
+
+
+                                                  </div>
+                                                  <button type="submit" class="btn-sm btn-secondary">Agregar
+                                                      Item</button>
+                                              </div>
+
+                                              <div class="col-md-3">
+                                                  <div class="card card-primary card-outline">
+                                                      <div class="card-header">
+
+
+
+                                                          <label>Medida interna</label>
+                                                          <div class="form-group">
+                                                              <input type="number" step="0.01" class="form-control"
+                                                                  id="cantint" required />
+                                                          </div>
+                                                          <div class="form-group">
+
+                                                              <select class="form-control" id="umedida"
+                                                                  required></select>
+                                                          </div>
+
                                                       </div>
-                                                      <div class="form-group">
-
-                                                          <select class="form-control" id="umedida" required></select>
-                                                      </div>
-                                                  
+                                                  </div>
                                               </div>
                                           </div>
-
-
+                                        </form>
                                       </div>
-                                      <div class="col-md-2">
-                                          <label> &nbsp;</label>
-                                          <div class="form-group">
-
-                                              <input type="hidden" id="item78" />
-                                              <input type="hidden" id="destino" />
-                                            
-                                          </div>
+                                  
+                                  <div class="col-md-2">
+                                  <label>Descuento por item</label>
+                                      <input type="text" id="promo" class="form-control col-md-12"
+                                          placeholder="Descuento % por ITEM" />
+                                      <label> &nbsp;</label>
+                                      <div class="form-group">
+                                          <input type="hidden" id="promo2" class="form-control col-md-12"
+                                              placeholder="Descuento % General" />
+                                          <input type="hidden" id="item78" />
+                                          <input type="hidden" id="destino" />
                                       </div>
                                   </div>
+                              </div>
 
-                              </form>
+
                               <div class="row">
                                   <div class="col-md-12">
                                       <div id="example1_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -240,7 +251,7 @@
 
                                                               <th>Descripcion</th>
                                                               <th>Cantidad</th>
-                                                              <th>promo</th>
+                                                              <th>Desc.</th>
                                                               <th>Precio</th>
                                                               <th>Subtotal</th>
                                                               <th> <button type="button" id="Resumen"
@@ -461,7 +472,6 @@ $('#tipodocSelect').on('change', function() {
     var grancontribuyente = '';
     $('#Vnumcontrol').html('');
     $('#Vcodcontrol').html('');
-
     $('#Cuerpodocumento')[0].reset();
     $('#receptor')[0].reset();
     $("#select1").empty();
@@ -666,11 +676,21 @@ $('#PartContable').submit(function() {
 
 $('#Cuerpodocumento').submit(function() {
 
+    var Descuento = 0;
     var tipodocSelect = $('#tipodocSelect').val();
 
     var filas = tableDetalle.rows().count() + 1;
 
+    if ($('#promo2').val() != '') {
+        Descuento = $('#promo2').val();
+        $('#promo2').prop("disabled", true);
+    }
 
+    if ($('#promo').val() != '') {
+        Descuento = $('#promo').val();
+    }
+
+    console.log(Descuento);
     var Datos = {
         "numeroControl": numeroControl,
         "codigoGeneracion": codigoGeneracion,
@@ -683,6 +703,7 @@ $('#Cuerpodocumento').submit(function() {
         "item78": $('#item78').val(),
         "item153": $('#item153').val(),
         "promo": $('#promo').val(),
+        
         "areafact": areafact,
         "cantint": $('#cantint').val(),
         "umedida": $('#umedida').val(),

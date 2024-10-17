@@ -989,7 +989,7 @@ $Reporte='Ccfe';
             'fTransmision' => $fecha,
             'hTransmision' => $hora,
         );
-        $emisor=$this->emisor_model->getEmisor();
+        $emisor=$this->emisor_model->getEmisor($this->session->userdata( "codestab" ));
         $emi=array(
             'nit'=>str_replace("-","",$emisor[0]->nit),
             'nombre'=>$emisor[0]->nomComercial,

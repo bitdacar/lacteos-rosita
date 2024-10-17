@@ -94,6 +94,7 @@ class Cuerpodocumento extends CI_Controller
             $cuentaVende = 'cuentaCred';
         }
         $cuentavendedor = $this->resumen_model->cuentavendedor($cuentaVende, $this->session->userdata("uname"));
+        
         $data2  = array(
             'fecha' => $item10,
             'idReceptor' => $txt1,
@@ -143,6 +144,7 @@ class Cuerpodocumento extends CI_Controller
         $cotrans =   $impuestos[1]->valor;
         $iva13 =    $impuestos[2]->valor;
         $numDocRelacionado = '';
+        $montoDescu=0.00;
 
 
 
@@ -150,6 +152,11 @@ class Cuerpodocumento extends CI_Controller
             $precio = $this->lrenta->precioSinIva( $precio, $iva13 ) ;
 
         }*/
+        if($promo >=0){
+            $montoDescu=($this->input->post("item85")*($promo/100));
+            $precio = $this->input->post("item85")-($montoDescu);
+        }
+
         if ($tipodocSelect == 'storeCCF') {
             $ivaxitem = $this->lrenta->caliva13($precio, $cantidad, $iva13);
         } else {
@@ -176,9 +183,9 @@ class Cuerpodocumento extends CI_Controller
             'codTributo' => '',
             'unidadMedida' => $this->input->post("item83"),
             'descripcion' => $this->input->post("item84"),
-            'precioUnitario' => $precio,
+            'precioUnitario' => $this->input->post("item85"),
             'valorUnitario' => $promo,
-            'descuentos' => '0.00',
+            'descuentos' => number_format($montoDescu*$cantidad, 2, '.', ''),
             'ventasNSujetas' => '0.00',
             'ventasExentas' => '0.00',
             'ventasGravadas' => $gravadas,
@@ -417,17 +424,20 @@ class Cuerpodocumento extends CI_Controller
         $totalGravado = 0.00;
         $ivaResumen = 0.00;
         $subTotal = 0.00;
+        $sumdescuentos=0.00;
         $sumadeprecioxcantidad = 0.00;
         $ivaRetenido = 0.0;
         if ($condicionOpera == "Ci") {
             $condicionOpera = 1;
         }
+       
 
         for ($i = 0; $i < count($respuesta); $i++) {
             $totalGravado += $respuesta[$i]->subtotal;
             $ivaResumen += $respuesta[$i]->ivaItem;
             $sumadeprecioxcantidad += ($respuesta[$i]->precioUnitario * $respuesta[$i]->cantidad);
             $subTotal = $totalGravado;
+            $sumdescuentos+=$respuesta[$i]->descuentos;
         }
 
         $totalGravado = number_format($totalGravado, 2, '.', '');
@@ -461,7 +471,7 @@ class Cuerpodocumento extends CI_Controller
             'montoGloDescVE' => '0.00',
             'montoGloDescVG' => '0.00',
             'porcMontoGloDesc' => '0.00',
-            'totalDescBonRev' => '0.00',
+            'totalDescBonRev' =>   number_format($sumdescuentos, 2, '.', ''),
             //'nombreTributo'=> '[{"codigo":"20","descripcion":"Impuesto al Valor Agregado 13%","valor":'.$ivaResumen.'}]',
             'ivaPercibido' => '0.00',
             'ivaRetenido' => $ivaRetenido,
@@ -534,11 +544,13 @@ class Cuerpodocumento extends CI_Controller
         $ivaRetenido = 0.0;
         $retencionRenta = 0.00;
         $ivaPercibido = 0.00;
+        $sumdescuentos=0.00;
 
         for ($i = 0; $i < count($respuesta); $i++) {
             $totalGravado += $respuesta[$i]->subtotal;
             $ivaResumen += $respuesta[$i]->ivaItem;
             $sumadeprecioxcantidad += ($respuesta[$i]->precioUnitario * $respuesta[$i]->cantidad);
+            $sumdescuentos+=$respuesta[$i]->descuentos;
         }
 
         $totalGravado = bcdiv($totalGravado, '1', 2);
@@ -572,7 +584,7 @@ class Cuerpodocumento extends CI_Controller
             'montoGloDescVE' => '0.00',
             'montoGloDescVG' => '0.00',
             'porcMontoGloDesc' => '0.00',
-            'totalDescBonRev' => '0.00',
+            'totalDescBonRev' => number_format($sumdescuentos, 2, '.', ''),
             'nombreTributo' => '[{"codigo":"20","descripcion":"Impuesto al Valor Agregado 13%","valor":' . $ivaResumen . '}]',
             'subTotal' => $totalGravado,
             'ivaRetenido' => $ivaRetenido,
