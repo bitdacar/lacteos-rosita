@@ -21,7 +21,7 @@
             "responsive": true,
 
         });
-
+        $('#promo2').prop("disabled", false);
      
 
 }

@@ -576,7 +576,7 @@ class json_model extends CI_Model
 					r.montoGloDescVE as descuExenta,
 					r.montoGloDescVG as descuGravada,
 					r.porcMontoGloDesc as porcentajeDescuento,
-					r.montoGloDescVA as totalDescu,
+					r.totalDescBonRev as totalDescu,
 					r.resCodTributo as codigoTributo,
 					r.nombreTributo as descripcion,
 					r.subTotal,

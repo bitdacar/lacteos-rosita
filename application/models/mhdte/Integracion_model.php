@@ -302,4 +302,19 @@ where  b.codigoGeneracion in (select codigoGeneracion from identificacion i wher
         return $resultados->result();
         
     }
+
+    public function descActividad( $codActividad ) {
+        $this->db->select( "codigo,valor" );
+        $this->db->where( 'codigo', $codActividad );
+        $this->db->from( "cat019" );
+
+        $resultados = $this->db->get();
+        return $resultados->result();
+
+    }
+    
+    public function ingresoCliente( $tbl_receptor ) {
+
+        return $this->db->insert( "receptor", $tbl_receptor );
+    }
 }

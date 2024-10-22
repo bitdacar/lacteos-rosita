@@ -183,7 +183,7 @@ class documentosdte extends CI_Controller
             unset($identificacion->resumen->codigoFormaPago);
             unset($identificacion->codestab);
             $identificacion->apendice = null;
-            $identificacion->resumen =$this->json_model->getResumen();
+            //$identificacion->resumen =$this->json_model->getResumen();
 
             $this->limpiarDocumento($identificacion);
 

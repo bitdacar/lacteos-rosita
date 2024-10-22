@@ -188,7 +188,7 @@ class generales extends CI_Controller {
          $data  = array(
 
              'version'=> 2,
-             'ambiente' => '01', 
+             'ambiente' => $this->session->userdata('ambiente'), 
              'versionApp' => 2, 
              'estado' => 'PROCESADO', 
              'codigoGeneracion' => $codigoGeneracion, 

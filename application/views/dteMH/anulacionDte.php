@@ -95,6 +95,7 @@ h4,
 var mi_tabla;
 var numeroControl = '';
 var codigoGeneracion = '';
+var token='';
 $(document).ready(function() {
     mi_tabla = $('#factura').DataTable({
 
@@ -161,7 +162,7 @@ $('#btnApi').on('click', function() {
 
 $('#btnAnulando').on('click', function() {
 
-    const url = 'enviarDteAnular';
+     url = "<?php echo base_url("mhdte/Integracion/enviarDteAnular");?>";
     const user = $('#codigoGeneracion').val();
     const cat024 = $('#cat024').val();
     const motivoAnulacion = $('#motivoAnulacion').val();
@@ -195,6 +196,8 @@ $('#btnAnulando').on('click', function() {
             // console.log(respuesta.jsonAnu);
             if (respuesta.ok == 1) {
                 const infoToken = obtenerToken()
+                token = '<?php echo $this->session->userdata('token');?>';
+
                 enviarAnulacionJson(respuesta.jsonAnu);
             }
 
@@ -216,12 +219,11 @@ async function enviarAnulacionJson(dataDte) {
 
 
     const url = '<?php echo $this->session->userdata('urlAnula');?>';
-    const token = '<?php echo $this->session->userdata('token');?>';
-
+    
     const documento = (await firmarDocumentoAn(dataDte)).body;
 
     const dataToSend = {
-        ambiente: "01",
+        ambiente:  '<?php echo $this->session->userdata('ambiente');?>',
         idEnvio: 1,
         version: 2,
         documento

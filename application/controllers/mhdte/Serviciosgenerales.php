@@ -23,8 +23,9 @@ class serviciosgenerales extends CI_Controller {
     
     public function buscarProductos(){
 
-        $area = $this->session->userdata( "areafact");
-        $tablaResumen = $this->Serviciosgenerales_model->ListProducto( $area);
+        $area = $this->session->userdata( "codestab");
+        $tienda = $this->session->userdata( "tienda");
+        $tablaResumen = $this->Serviciosgenerales_model->ListProducto( $area,$tienda);
         echo json_encode( $tablaResumen );
 
     }
@@ -664,7 +665,9 @@ class serviciosgenerales extends CI_Controller {
         );  
 
 
-        if ( $this->docrelacionados_model->save( $dicVin ) && $this->identificacion_model->save( $data ) && $this->identificacion_model->save2( $data2 ) && $this->Cuerpodocumento_model->save( $data3 ) &&  $this->resumen_model->savetho( $data4,$numeroControlFin,$codigoGeneracion )) {
+        if ( $this->docrelacionados_model->save( $dicVin ) && $this->identificacion_model->save( $data ) && 
+        $this->identificacion_model->save2( $data2 ) && $this->Cuerpodocumento_model->save( $data3 ) &&  
+        $this->resumen_model->savetho( $data4,$numeroControlFin,$codigoGeneracion )) {
             $datasave  = array(
                 'identificacion' =>1,
                 'receptordocumen' => 1,

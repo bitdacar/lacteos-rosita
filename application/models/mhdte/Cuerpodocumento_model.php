@@ -13,7 +13,9 @@ class Cuerpodocumento_model extends CI_Model {
 	}
     
 	public function getParaResumen2($numeroControl,$codigoGeneracion){
-        $query="select codigo,item,identificador,(select valor from cat014 where codigo=unidadMedida) unidadMedida,descripcion,precioUnitario,cantidad,ventasGravadas subtotal,ivaItem,r.ivaRetenido,r.ivaPercibido,observacionesItem,valorUnitario promo, JSON_EXTRACT(observacionesItems,  '$.rentaMenos') retencionRenta, JSON_EXTRACT(observacionesItems,  '$.ivaRetenido') ivaRetenidoJson
+        $query="select codigo,item,identificador,(select valor from cat014 where codigo=unidadMedida) unidadMedida,descripcion,precioUnitario,cantidad,
+		ventasGravadas subtotal,ivaItem,r.ivaRetenido,r.ivaPercibido,observacionesItem,valorUnitario promo, descuentos,
+		JSON_EXTRACT(observacionesItems,  '$.rentaMenos') retencionRenta, JSON_EXTRACT(observacionesItems,  '$.ivaRetenido') ivaRetenidoJson
         from Cuerpodocumento c
         join resumen r on r.numeroControl =c.numeroControl and r.codigoGeneracion =c.codigoGeneracion 
         where c.numeroControl= '".$numeroControl."' and
@@ -26,7 +28,9 @@ class Cuerpodocumento_model extends CI_Model {
         return $resultados->result();
 	}
     public function getParaResumen($numeroControl,$codigoGeneracion){
-        $this->db->select("codigo,item,identificador,(select valor from cat014 where codigo=unidadMedida) unidadMedida,descripcion,precioUnitario,cantidad,ventasGravadas subtotal,ivaItem,ivaRetenido,ivaPercibido,observacionesItem,valorUnitario promo, JSON_EXTRACT(observacionesItems,  '$.rentaMenos') retencionRenta, JSON_EXTRACT(observacionesItems,  '$.ivaRetenido') ivaRetenido");
+        $this->db->select("codigo,item,identificador,(select valor from cat014 where codigo=unidadMedida) unidadMedida,descripcion,precioUnitario,
+		cantidad,ventasGravadas subtotal,ivaItem,ivaRetenido,ivaPercibido,observacionesItem,valorUnitario promo, descuentos,
+		JSON_EXTRACT(observacionesItems,  '$.rentaMenos') retencionRenta, JSON_EXTRACT(observacionesItems,  '$.ivaRetenido') ivaRetenido");
 		$this->db->where("numeroControl",$numeroControl);
 		$this->db->where("codigoGeneracion",$codigoGeneracion);
 		$resultados = $this->db->get("Cuerpodocumento");

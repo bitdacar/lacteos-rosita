@@ -5,47 +5,7 @@
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<title>Lacteos Rosita</title>
 
-	<!-- 
-    <link href="<?php echo base_url(); ?>assets/template/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-    <link href="<?php echo base_url(); ?>assets/template/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  
-    <link href="<?php echo base_url(); ?>assets/template/nprogress/nprogress.css" rel="stylesheet">
-  
-    <link href="<?php echo base_url(); ?>assets/template/animate.css/animate.min.css" rel="stylesheet">
-  
-    
-
-
-  
-   <link  href="<?php echo base_url(); ?>assets/template/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  
-    <link  href="<?php echo base_url(); ?>assets/template/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  
-    <link  href="<?php echo base_url(); ?>assets/template/nprogress/nprogress.css" rel="stylesheet">
-  
-    <link  href="<?php echo base_url(); ?>assets/template/iCheck/skins/flat/green.css" rel="stylesheet">
 	
-  
-    <link  href="<?php echo base_url(); ?>assets/template/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
-  
-    <link  href="<?php echo base_url(); ?>assets/template/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
-  
-    <link  href="<?php echo base_url(); ?>assets/template/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-
-    <link href="<?php echo base_url(); ?>assets/build/css/custom.css" rel="stylesheet">
-
-
-    
-		<link href="<?php echo base_url(); ?>assets/template/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/template/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/template/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/template/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>assets/template/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet"> 
-    
-		-->
-
-
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">

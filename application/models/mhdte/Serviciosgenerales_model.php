@@ -11,9 +11,10 @@ class Serviciosgenerales_model extends CI_Model {
     	public function saveM($data){
 		return $this->db->insert("seccionesxdoc",$data);
 	}
-    public function ListProducto($data){
+    public function ListProducto($data,$tienda){
 		$this->db->select("id,codigo,descripcion,precio,UnidadMedida");
-        $this->db->where( "area", $data );
+        $this->db->where( "codCobol", $data );
+        $this->db->where( "tienda", $tienda );
 		$this->db->from("productos");
         //$this->db->order_by('estado','ASC');
         $resultados = $this->db->get();
