@@ -951,7 +951,7 @@ class Cuerpodocumento extends CI_Controller
             'CargosAbono' => '0.00',
             //'observacionesItem'=>preg_replace('/\<br(\s*)?\/?\>/i', "\n",$this->input->post( "observacionesItem" ))
             'observacionesItem' => $this->input->post("observacionesItem"),
-            'observacionesItems' => $this->input->post("Marcas"),
+            'observacionesItems' => '{"rentaMenos":"550","ivaRetenido":"PA-0624 BB-609"}',
             'areafact' => $this->session->userdata("areafact"),
             'sacosEsp' =>   json_encode($dataPost),
             'cantint' =>$this->input->post("cantint"),
