@@ -1445,4 +1445,95 @@ $Reporte='Ccfe';
     }
     
     
+
+    public function IngresoCliente() {
+
+        $nombre = $this->input->post( "nombreclt" );
+        $dui= $this->input->post( "dui" );
+        $nit = $this->input->post( "nit" );
+        $nrc = $this->input->post( "ncr" );
+        $codActividad = $this->input->post( "ActEco" );
+        $email = $this->input->post( "email" );
+        $telefono = $this->input->post( "telefono" );
+        $prn = $this->input->post( "prn" );
+        $departamento = $this->input->post( "departamento" );
+        $municipio = $this->input->post( "municipio" );
+        $tipocontribuyente=$this->input->post( "contribuyente" );
+        $dtearea=$this->input->post( "dtearea" );
+        $dircomplemento=$this->input->post( "dircomplemento" );
+
+        
+        $contri = '';
+        
+
+        $descActividad = $this->integracion_model->descActividad( $codActividad );
+
+        
+       
+        $tipoDocumento = 36;
+           
+       if($tipocontribuyente!='N'){
+        $contri='30-';
+       }else{
+         $contri='40-';
+       }
+
+    
+       $fecha = date( "m-d" );
+       $horaactual= date("s");
+        $contri2=  $fecha. $horaactual ;
+
+
+
+        $tbl_receptor  = array(
+            'tipDoc'=>$tipoDocumento,
+            'codigo'=> $contri.str_replace( "-", "", $contri2 ),
+            'numDoc'=>$dui,
+            'ncr'=>$nrc == null ? '00':$nrc,
+           // 'prn'=>$prn == null ? '00':$prn,
+            'nit'=>$nit,
+            'NomDenominacion'=>$nombre,
+            'nomComercial'=>$nombre,
+            'codActEco'=>$codActividad,
+            'actEco'=>$descActividad[0]->valor ,
+            'departamento'=>$departamento,//'04',
+            'municipio'=>$municipio,//'07',
+            'dircomplemento'=>$dircomplemento,
+            'correoReceptor'=>$email,
+            'telReceptor'=> $telefono,
+            'area'=> $dtearea,
+            'granContribuyente'=> $tipocontribuyente,
+            'codPais'=> 'SV',
+            'paisDestino'=> 'SV',
+
+        );
+
+        if ( $this->integracion_model->ingresoCliente( $tbl_receptor ) ) {
+
+            $data  = array(
+
+                'respuesta'=>$contri.str_replace( "-", "", $contri2 ),
+                'nombre'=>$nombre,
+                'Error'=>''
+
+            );
+
+            echo json_encode( $data );
+
+        } else {
+            $data  = array(
+
+                'respuesta'=>'',
+                'Error'=>$this->session->set_flashdata( "error", "No se pudo guardar la informacion" ),
+
+            );
+
+            echo json_encode( $data );
+        }
+
+    }
+
+
+
+
 }
