@@ -18,7 +18,6 @@ class generales extends CI_Controller {
         $area = $this->session->userdata("codestab");//$this->input->post( "area" );
         $tienda = $this->session->userdata("tienda");
 
-
         $response=$this->productos_model->listaProductos($area,$codigo,$tienda);
         echo  json_encode($response);
 
